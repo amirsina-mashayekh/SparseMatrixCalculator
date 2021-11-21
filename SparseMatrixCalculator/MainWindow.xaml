@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SparseMatrixCalculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Sparse Matrix Calculator" Height="450" Width="800" FontFamily="Segoe UI">
+    <TabControl>
+        <TabItem Header="Matrix A">
+            <Frame x:Name="MatrixAPage" Source="MatrixInput.xaml" NavigationUIVisibility="Hidden"/>
+        </TabItem>
         
-    </Grid>
+        <TabItem Header="Matrix B">
+            <Frame x:Name="MatrixBPage" Source="MatrixInput.xaml" NavigationUIVisibility="Hidden"/>
+        </TabItem>
+        
+        <TabItem Header="Operation">
+            
+        </TabItem>
+    </TabControl>
 </Window>
