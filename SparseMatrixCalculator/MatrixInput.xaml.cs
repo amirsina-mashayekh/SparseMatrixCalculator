@@ -40,7 +40,7 @@ namespace SparseMatrixCalculator
 
         private TextBox NewMatrixElement()
         {
-            return new TextBox()
+            TextBox element = new TextBox()
             {
                 Text = "0",
                 Width = 40,
@@ -48,6 +48,9 @@ namespace SparseMatrixCalculator
                 TextAlignment = TextAlignment.Center,
                 Margin = new Thickness(2)
             };
+            element.GotFocus += MatrixElements_GotFocus;
+
+            return element;
         }
 
         private void AddMatrixRow()
@@ -65,6 +68,7 @@ namespace SparseMatrixCalculator
                 Grid.SetColumn(textBox, i);
             }
             SetMatrixElementsTabIndex();
+            RowsCount.Text = MatrixGrid.RowDefinitions.Count.ToString();
         }
 
         private void AddMatrixCol()
@@ -73,7 +77,7 @@ namespace SparseMatrixCalculator
             { Width = new GridLength(1, GridUnitType.Auto) });
 
             int lastCol = MatrixGrid.ColumnDefinitions.Count - 1;
-            int rowsCount = MatrixGrid.ColumnDefinitions.Count;
+            int rowsCount = MatrixGrid.RowDefinitions.Count;
             for (int i = 0; i < rowsCount; i++)
             {
                 TextBox textBox = NewMatrixElement();
@@ -82,6 +86,7 @@ namespace SparseMatrixCalculator
                 Grid.SetColumn(textBox, lastCol);
             }
             SetMatrixElementsTabIndex();
+            ColsCount.Text = MatrixGrid.ColumnDefinitions.Count.ToString();
         }
 
         private void SetMatrixElementsTabIndex()
@@ -141,6 +146,11 @@ namespace SparseMatrixCalculator
             }
             MatrixGrid.RowDefinitions.RemoveAt(lastRow);
             SetMatrixElementsTabIndex();
+        }
+
+        private void MatrixElements_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (sender as TextBox).SelectAll();
         }
 
         public double[,] GetMatrix()

@@ -19,24 +19,26 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel HorizontalAlignment="Center" Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
-            <TextBlock>Columns:</TextBlock>
-            <Button x:Name="RemoveColButton" Width="25" Height="25"
-                HorizontalAlignment="Center" VerticalAlignment="Center"
-                Content="-" Click="RemoveColButton_Click"/>
-            <TextBlock x:Name="ColsCount"/>
-            <Button x:Name="AddColButton" Width="25" Height="25"
-                HorizontalAlignment="Center" VerticalAlignment="Center"
+            <TextBlock Margin="0,0,5,0" VerticalAlignment="Center">Columns:</TextBlock>
+            
+            <Button x:Name="RemoveColButton" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Content="&#x2212;" Click="RemoveColButton_Click"/>
+
+            <TextBlock x:Name="ColsCount" Width="30" TextAlignment="Center" VerticalAlignment="Center"/>
+
+            <Button x:Name="AddColButton" HorizontalAlignment="Center" VerticalAlignment="Center"
                 Content="+" Click="AddColButton_Click"/>
         </StackPanel>
 
         <StackPanel VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Orientation="Vertical">
-            <TextBlock>Rows:</TextBlock>
-            <Button x:Name="RemoveRowButton" Width="25" Height="25"
-                HorizontalAlignment="Center" VerticalAlignment="Center"
-                Content="-" Click="RemoveRowButton_Click"/>
-            <TextBlock x:Name="RowsCount"/>
-            <Button x:Name="AddRowButton" Width="25" Height="25"
-                HorizontalAlignment="Center" VerticalAlignment="Center"
+            <TextBlock Margin="5,0,5,0">Rows:</TextBlock>
+            
+            <Button x:Name="RemoveRowButton" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Content="&#x2212;" Click="RemoveRowButton_Click"/>
+            
+            <TextBlock x:Name="RowsCount" TextAlignment="Center"/>
+            
+            <Button x:Name="AddRowButton" HorizontalAlignment="Center" VerticalAlignment="Center"
                 Content="+" Click="AddRowButton_Click"/>
         </StackPanel>
 

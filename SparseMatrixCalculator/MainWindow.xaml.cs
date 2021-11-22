@@ -47,6 +47,33 @@ namespace SparseMatrixCalculator
             ResultSparse.Children.Clear();
             ResultSparse.RowDefinitions.Clear();
 
+            ResultSparse.RowDefinitions.Add(new RowDefinition()
+            {
+                Height = new GridLength(1, GridUnitType.Auto)
+            });
+
+            ResultSparse.Children.Add(new TextBlock()
+            {
+                Text = "Row",
+                TextAlignment = TextAlignment.Center
+            });
+            ResultSparse.Children.Add(new TextBlock()
+            {
+                Text = "Column",
+                TextAlignment = TextAlignment.Center
+            });
+            ResultSparse.Children.Add(new TextBlock()
+            {
+                Text = "Value",
+                TextAlignment = TextAlignment.Center
+            });
+
+            for (int i = 0; i < 3; i++)
+            {
+                Grid.SetColumn(ResultSparse.Children[i], i);
+                Grid.SetRow(ResultSparse.Children[i], 0);
+            }
+
             for (int i = 0; i < result.elementsCount; i++)
             {
                 ResultSparse.RowDefinitions.Add(new RowDefinition()
@@ -64,9 +91,9 @@ namespace SparseMatrixCalculator
                 ResultSparse.Children.Add(col);
                 ResultSparse.Children.Add(val);
 
-                Grid.SetRow(row, i);
-                Grid.SetRow(col, i);
-                Grid.SetRow(val, i);
+                Grid.SetRow(row, i + 1);
+                Grid.SetRow(col, i + 1);
+                Grid.SetRow(val, i + 1);
                 Grid.SetColumn(row, 0);
                 Grid.SetColumn(col, 1);
                 Grid.SetColumn(val, 2);
