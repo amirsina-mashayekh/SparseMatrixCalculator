@@ -16,7 +16,44 @@
         </TabItem>
         
         <TabItem Header="Operation">
-            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                
+                <WrapPanel Grid.Row="0" Grid.ColumnSpan="2">
+                    <Button x:Name="SparseA" Click="SparseA_Click">Sparse(A)</Button>
+                    <Button x:Name="SparseB" Click="SparseB_Click">Sparse(B)</Button>
+                    <Button x:Name="TransposeA" Click="TransposeA_Click">Transpose(A)</Button>
+                    <Button x:Name="TransposeB" Click="TransposeB_Click">Transpose(B)</Button>
+                    <Button x:Name="APlusB" Click="APlusB_Click">A + B</Button>
+                    <Button x:Name="AMinusB" Click="AMinusB_Click">A - B</Button>
+                    <Button x:Name="BMinusA" Click="BMinusA_Click">B - A</Button>
+                    <Button x:Name="AMulB" Click="AMulB_Click">A * B</Button>
+                    <Button x:Name="BMulA" Click="BMulA_Click">B * A</Button>
+                </WrapPanel>
+
+                <ScrollViewer Grid.Row="1" Grid.Column="0" Margin="5"
+                              HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Grid x:Name="ResultSparse">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ScrollViewer>
+
+                <ScrollViewer Grid.Row="1" Grid.Column="1" Margin="5"
+                              HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <Grid x:Name="ResultMatrix"/>
+                </ScrollViewer>
+            </Grid>
         </TabItem>
     </TabControl>
 </Window>

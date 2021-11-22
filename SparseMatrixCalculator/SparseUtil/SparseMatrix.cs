@@ -174,27 +174,27 @@ namespace SparseMatrixCalculator.SparseUtil
 
             SparseMatrix transposed = new SparseMatrix(matrix.elementsCount, matrix.originalColumnsCount, matrix.originalRowsCount);
 
-            int[] rowSize = new int[matrix.originalRowsCount];
+            int[] colSize = new int[matrix.originalColumnsCount];
             for (int i = 0; i < matrix.elementsCount; i++)
             {
-                rowSize[matrix.indexes[i, 0]]++;
+                colSize[matrix.indexes[i, 1]]++;
             }
 
-            int[] startOfRow = new int[matrix.originalRowsCount];
+            int[] startOfCol = new int[matrix.originalColumnsCount];
             for (int i = 1; i < matrix.originalRowsCount; i++)
             {
-                startOfRow[i] = startOfRow[i - 1] + rowSize[i - 1];
+                startOfCol[i] = startOfCol[i - 1] + colSize[i - 1];
             }
 
             for (int i = 0; i < matrix.elementsCount; i++)
             {
-                int SOR_Index = matrix.indexes[i, 0];
-                int SOR = startOfRow[SOR_Index];
+                int SOR_Index = matrix.indexes[i, 1];
+                int SOR = startOfCol[SOR_Index];
 
                 transposed.indexes[SOR, 1] = matrix.indexes[i, 0];
                 transposed.indexes[SOR, 0] = matrix.indexes[i, 1];
                 transposed.elements[SOR] = matrix.elements[i];
-                startOfRow[SOR_Index]++;
+                startOfCol[SOR_Index]++;
             }
             return transposed;
         }
