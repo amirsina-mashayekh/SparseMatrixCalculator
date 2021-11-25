@@ -110,25 +110,6 @@ namespace SparseMatrixCalculator
             AddMatrixRow();
         }
 
-        private void RemoveColButton_Click(object sender, RoutedEventArgs e)
-        {
-            int lastCol = MatrixGrid.ColumnDefinitions.Count - 1;
-            if (lastCol == 0) { return; }
-
-            int elementsCount = MatrixGrid.Children.Count;
-            for (int i = 0; i < elementsCount; i++)
-            {
-                if (Grid.GetColumn(MatrixGrid.Children[i]) == lastCol)
-                {
-                    MatrixGrid.Children.RemoveAt(i);
-                    i--;
-                    elementsCount--;
-                }
-            }
-            MatrixGrid.ColumnDefinitions.RemoveAt(lastCol);
-            SetMatrixElementsTabIndex();
-        }
-
         private void RemoveRowButton_Click(object sender, RoutedEventArgs e)
         {
             int lastRow = MatrixGrid.RowDefinitions.Count - 1;
@@ -146,6 +127,27 @@ namespace SparseMatrixCalculator
             }
             MatrixGrid.RowDefinitions.RemoveAt(lastRow);
             SetMatrixElementsTabIndex();
+            RowsCount.Text = MatrixGrid.RowDefinitions.Count.ToString();
+        }
+
+        private void RemoveColButton_Click(object sender, RoutedEventArgs e)
+        {
+            int lastCol = MatrixGrid.ColumnDefinitions.Count - 1;
+            if (lastCol == 0) { return; }
+
+            int elementsCount = MatrixGrid.Children.Count;
+            for (int i = 0; i < elementsCount; i++)
+            {
+                if (Grid.GetColumn(MatrixGrid.Children[i]) == lastCol)
+                {
+                    MatrixGrid.Children.RemoveAt(i);
+                    i--;
+                    elementsCount--;
+                }
+            }
+            MatrixGrid.ColumnDefinitions.RemoveAt(lastCol);
+            SetMatrixElementsTabIndex();
+            ColsCount.Text = MatrixGrid.ColumnDefinitions.Count.ToString();
         }
 
         private void MatrixElements_GotFocus(object sender, RoutedEventArgs e)
